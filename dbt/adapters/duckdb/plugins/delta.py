@@ -137,7 +137,7 @@ def create_insert_partition(table_path, data, partitions, storage_options):
             f"Overwriting delta table under: {table_path} \nwith partition expr: {partition_expr}"
         )
         write_deltalake(
-            table_path, data, partition_filters=partition_expr, mode="overwrite"
+            table_path, data, partition_filters=partition_expr, mode="overwrite", storage_options=storage_options
         )
     else:
         partitions = [
@@ -146,7 +146,7 @@ def create_insert_partition(table_path, data, partitions, storage_options):
         print(
             f"Creating delta table under: {table_path} \nwith partitions: {partitions}"
         )
-        write_deltalake(table_path, data, partition_by=partitions)
+        write_deltalake(table_path, data, partition_by=partitions, storage_options=storage_options)
 
 
 # Future
